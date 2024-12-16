@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="uk">
+    <head>
+        <meta charset="utf-8">
+        <title>Фінансовий помічник</title>
+        <link rel="stylesheet" href="styles/main.css">
+        <link rel="icon" href="media/favicon.svg">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="js/main.js" defer></script>
+    </head>
+    <body>
+        <div id="bg"></div>
+        <div id="form-area">
+            <div id="form-holder">
+                <button id="switch-to-login" type="button">Є акаунт?</button>
+                <button id="switch-to-registration" type="button">Немає акаунта?</button>
+                <div id="registr-form">
+                    <input id="reg-login" name="login" type="text" placeholder="Логін"><br>
+                    <input id="reg-pass"  name="password" type="password" placeholder="Пароль"><br>
+                    <button id="registration-btn" type="submit">Створити акаунт</button><br>
+                </div>
+                <div id="login-form">
+                    <input id="log-login"  name="login" type="text" placeholder="Логін"><br>
+                    <input id="log-pass"   name="password" type="password" placeholder="Пароль"><br>
+                    <button id="login-btn" type="submit">Увійти</button><br>
+                </div>
+            </div>
+        </div>
+
+        <div class="list-el" id="user-data">
+            <div class="chat-ico unselectable" id="user-ico">QW</div>
+            <div class="chat-name-lastmsg">
+                <div class="chat-last-message">sgsfdfsd</div>
+            </div>
+        </div>
+
+        <div class="block-aera unselectable" id="chat-list">
+            <div id="search-and-add">
+                <input type="text" id="chat-search-field" placeholder="Пошук чату">
+                <button id="add-chat">+</button>
+            </div>
+            <div id="chat-holder">
+                <div class="list-el unselectable">
+                    <div class="chat-ico unselectable">ER</div>
+                    <div class="chat-name-lastmsg">
+                        <div class="chat-list-name">sgsfdfsd</div>
+                        <div class="chat-last-message">sgsfdfsd</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="block-aera" id="chat-aera">
+            <div id="chat-caption">
+                <div class="chat-ico unselectable" id="inaera-logo"> FA</div>
+                <div id="chat-name">sfddfdfa</div>
+                <button class="chat-ico unselectable" id="add-user-to-chat">+</button>
+            </div>
+
+            <div id="message-aera">
+                <div class="message-avatar">
+                    <div class="chat-ico unselectable in-chat-avatar"> FA</div>
+                </div>
+                <div id="" class="block-aera message message-segment-top message-by-me">
+                    алвпдлвап sfd sdfs dfsdfsdfs dfsdfs dfsdfsdf sdfsdfsdfsdf s  sdfsdfsdf dfsdfsdf sdf sdfsd fsdfs df sd fsd fdsfds df sd  sdfsdf sdfsdf
+                </div>
+            </div>
+
+            <div id="input-aera" class="block-aera">
+                <textarea id="new-message-text" placeholder="Введіть повідомлення"></textarea>    
+            </div>
+            <button id="send-message"></button>
+        </div>
+
+    </body>
+</html>

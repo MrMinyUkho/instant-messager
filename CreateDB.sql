@@ -1,0 +1,74 @@
+CREATE DATABASE IF NOT EXISTS Dmytro;
+
+USE Dmytro;
+
+CREATE TABLE Users (
+    id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    isBot BOOLEAN DEFAULT 0,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    pass VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE Chat (
+    id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    chat_owner INTEGER,
+    chat_name VARCHAR(100) NOT NULL,
+    FOREIGN KEY (chat_owner) REFERENCES Users (id) ON DELETE SET NULL
+);
+
+CREATE TABLE Messages (
+    chat_id INTEGER NOT NULL,
+    user_id INTEGER NOT NULL,
+    reply_to INTEGER,
+    content TEXT NOT NULL,
+    message_id INTEGER NOT NULL,
+    at_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (chat_id) REFERENCES Chat (id) ON DELETE CASCADE
+);
+
+DELIMITER //
+
+CREATE TRIGGER SetUserIdToMinusOne
+AFTER DELETE ON Users
+FOR EACH ROW
+BEGIN
+    UPDATE Messages
+    SET user_id = -1
+    WHERE user_id = OLD.id;
+END; //
+
+DELIMITER ;
+
+CREATE TABLE UserInChat (
+    user_id INTEGER NOT NULL,
+    chat_id INTEGER NOT NULL,
+    joined_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (user_id, chat_id),
+    FOREIGN KEY (user_id) REFERENCES Users (id) ON DELETE CASCADE,
+    FOREIGN KEY (chat_id) REFERENCES Chat (id) ON DELETE CASCADE
+);
+
+SELECT * FROM Messages;
+
+DROP TRIGGER SetUserIdToMinusOne;
+DROP DATABASE Dmytro;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
